@@ -48,13 +48,42 @@ def img_analysis(image_url):
     #The code below cleans up and prints out the JSON
     analysis = response.json()
     print(json.dumps(response.json()).replace('"',''))
-    
-    
 
 img_analysis("IMAGE-URL-GOES-HERE")
 
 ```
 
+Another way to use this code is to provide an image locally for analysis. In the code below, replace "IMAGE-PATH-GOES-HERE" with the path to the image that you want to analyze.
+
+
+```
+def image_analysis_local(image_path, subscription_key):
+    import requests
+    import matplotlib.pyplot as plt
+    from PIL import Image
+    from io import BytesIO
+    
+    assert subscription_key
+    
+    # You have to use the same region from your subscription key in the above address
+    vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+    analyze_url = vision_base_url + "analyze"
+    
+    image_data = open(image_path, "rb").read()
+    headers    = {'Ocp-Apim-Subscription-Key': subscription_key, 'Content-Type': 'application/octet-stream'}
+    params     = {'visualFeatures': 'Description'}
+    response = requests.post(analyze_url, headers=headers, params=params, data=image_data)
+    response.raise_for_status()
+    
+    #The code below prints out the JSON stuff so you can see what gets returned 
+    #and makes up a caption based on the keywords that the tool finds
+    analysis = response.json()
+    print(analysis)
+    image_caption = analysis["description"]["captions"][0]["text"].capitalize().replace('"','')
+    
+image_analysis_local("IMAGE-PATH-GOES-HERE", input("Enter your API key here: "))
+
+```
 
 
 

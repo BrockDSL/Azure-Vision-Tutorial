@@ -17,10 +17,41 @@ Once you have logged into the Microsoft Azure Portal, search for "Computer Visio
 ![Screenshot 1][scrn1]
 
 Navigate to your new key selecting "All Resources" from the left menu and clicking on the name of the key that you created.  Under the "Resource Management" section select "Keys" and you should see your two new keys with a "Copy to Clipboard" button beside each one that you can use to quickly copy your keys.
+  
+  
+  
+## Step 2 - The Code
 
+The Python code below takes the URL of an image and processes it using the Computer Vision API. The results are returned in a JSON format which is then cleaned up a bit and printed out. Try it out by replacing the text "IMAGE-URL-GOES-HERE" with a URL of an image from somewhere on the internet (make sure that it is the images URL, not a webpage). The function will ask for your API key each time you run it so have it handy to copy and paste into the input field that appears.
 
+'''css
+def img_analysis(image_url):
+    import requests
+    import json
+    from PIL import Image
+    from io import BytesIO
+    
+    subscription_key = input("Enter your API key here: ")
+    assert subscription_key
+    vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+    # You have use the same region from your subscription key in the above address
+    
+    analyze_url = vision_base_url + "analyze"
+    
+    headers = {'Ocp-Apim-Subscription-Key': subscription_key }
+    params  = {'visualFeatures': 'Description'}
+    data    = {'url': image_url}
+    response = requests.post(analyze_url, headers=headers, params=params, json=data)
+    response.raise_for_status()
+    
+    #The code below cleans up and prints out the JSON
+    analysis = response.json()
+    print(json.dumps(response.json()).replace('"',''))
+    
+    
 
-
+img_analysis("IMAGE-URL-GOES-HERE")
+'''
 
 
 

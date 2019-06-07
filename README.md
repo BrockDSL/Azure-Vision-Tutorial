@@ -40,8 +40,8 @@ def img_analysis(image_url):
     analyze_url = vision_base_url + "analyze"
     
     headers = {'Ocp-Apim-Subscription-Key': subscription_key }
-    params  = {'visualFeatures': 'Description'}
-    data    = {'url': image_url}
+    params = {'visualFeatures': 'Description'}
+    data = {'url': image_url}
     response = requests.post(analyze_url, headers=headers, params=params, json=data)
     response.raise_for_status()
     
@@ -70,8 +70,8 @@ def image_analysis_local(image_path, subscription_key):
     analyze_url = vision_base_url + "analyze"
     
     image_data = open(image_path, "rb").read()
-    headers    = {'Ocp-Apim-Subscription-Key': subscription_key, 'Content-Type': 'application/octet-stream'}
-    params     = {'visualFeatures': 'Description'}
+    headers = {'Ocp-Apim-Subscription-Key': subscription_key, 'Content-Type': 'application/octet-stream'}
+    params = {'visualFeatures': 'Description'}
     response = requests.post(analyze_url, headers=headers, params=params, data=image_data)
     response.raise_for_status()
     

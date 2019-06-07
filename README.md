@@ -27,10 +27,21 @@ Navigate to your new key selecting "All Resources" from the left menu and clicki
 
 
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+![DSL Logo][imglogo]  
+  
+**This tutorial is brought to you by the Brock University Digital Scholarship Lab.  For more information on the DSL check out our website at [www.brocku.ca/library/dsl/](https://brocku.ca/library/dsl/) or you can e-mail us at dsl@brocku.ca.**  
+  
+You can also find us on:  
+[Facebook](https://www.facebook.com/Brock-University-Digital-Scholarship-Lab-349407235866792/)  
+[Twitter](https://twitter.com/brock_dsl)  
+[Instagram](https://www.instagram.com/brock_dsl/?hl=en)  
 
 
 
-
-
-
+[imglogo]: dsl-logo.jpg
 [scrn1]: azure-vision-scrn1.png

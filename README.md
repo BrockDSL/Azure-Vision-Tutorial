@@ -24,7 +24,7 @@ Navigate to your new key selecting "All Resources" from the left menu and clicki
 
 The Python code below takes the URL of an image and processes it using the Computer Vision API. The results are returned in a JSON format which is then cleaned up a bit and printed out. Try it out by replacing the text "IMAGE-URL-GOES-HERE" with a URL of an image from somewhere on the internet (make sure that it is the images URL, not a webpage). The function will ask for your API key each time you run it so have it handy to copy and paste into the input field that appears.
 
-'''css
+'''css  
 def img_analysis(image_url):
     import requests
     import json
